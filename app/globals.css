@@ -1,0 +1,344 @@
+@import 'tailwindcss';
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: var(--font-geist-sans), 'Geist Fallback';
+  --font-mono: var(--font-geist-mono), 'Geist Mono Fallback';
+}
+
+:root {
+  --primary: #0f172a; /* Deep Navy */
+  --secondary: #1e293b; /* Darker Navy */
+  --accent: #d4af37; /* Gold */
+  --accent-light: #ffd700; /* Light Gold */
+  --teal: #14b8a6; /* Teal Accent */
+  --white: #ffffff;
+  --gray-light: #f8fafc;
+  --gray-dark: #0f172a;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ===================== KEYFRAME ANIMATIONS ===================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(20, 184, 166, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 25px rgba(20, 184, 166, 0.8);
+  }
+}
+
+@keyframes rotate-360 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===================== ANIMATION UTILITY CLASSES ===================== */
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.8s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 3s infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Stagger animations */
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+
+.stagger-5 {
+  animation-delay: 0.5s;
+}
+
+/* ===================== INTERACTIVE EFFECTS ===================== */
+
+button, a {
+  transition: all 0.3s ease;
+}
+
+button:hover, a:hover {
+  transform: translateY(-2px);
+}
+
+/* ===================== BASE STYLES ===================== */
+
+@layer base {
+  * {
+    @apply border-inherit outline-inherit;
+  }
+  
+  html {
+    @apply font-sans bg-gradient-to-br from-slate-900 to-slate-950;
+  }
+  
+  body {
+    @apply min-h-screen antialiased;
+  }
+}
+
+
+
+
+/* adding extar layer  */
+/* for preloader animation */
+.preloader {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 9999;
+  overflow: hidden;
+  transform-origin: center top;
+}
+
+.preloader.exit {
+    transform:
+    translateY(-100%)
+    scale(0.98);
+  transition:
+    transform 1.8s cubic-bezier(.77,0,.175,1);
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  width: 16px;
+  height: 0%;
+
+  background: #f95c4b;
+
+  transition:
+    transform 1.8s cubic-bezier(.22,1,.36,1);
+}
+
+.digit-track {
+  transition-delay: 60ms;
+}
+
+.numbers {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.digit-container {
+  height: 180px;
+  overflow: hidden;
+}
+
+.digit-track {
+  display: flex;
+  flex-direction: column;
+
+  transform: translate3d(0,0,0);
+
+  will-change: transform;
+
+  backface-visibility: hidden;
+
+  transition:
+    transform 1.8s cubic-bezier(.22,1,.36,1);
+}
+
+.digit-track span {
+  height: 180px;
+  line-height: 180px;
+
+  font-size: 140px;
+  font-weight: 700;
+
+  color: #f95c4b;
+
+  font-variant-numeric: tabular-nums;
+
+text-shadow:
+  0 0 10px rgba(249,92,75,.12),
+  0 0 30px rgba(249,92,75,.08),
+  0 0 60px rgba(249,92,75,.04);
+}
+
+.percentage {
+  color: white;
+  font-size: 32px;
+  margin-left: 12px;
+  align-self: flex-start;
+}
